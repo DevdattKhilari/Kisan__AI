@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server:dev": "tsx watch server/index.ts",
+    "server:build": "tsc -p tsconfig.server.json",
+    "server:start": "node dist/server/index.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.8.1",
@@ -48,13 +51,17 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
+    "dotenv": "^16.4.7",
     "embla-carousel-react": "^8.3.0",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.1",
+    "express": "^4.21.2",
     "framer-motion": "^12.4.7",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.446.0",
+    "mongoose": "^8.10.2",
     "next": "13.5.1",
     "next-themes": "^0.3.0",
     "postcss": "8.4.30",
@@ -71,5 +78,10 @@
     "typescript": "5.2.2",
     "vaul": "^0.9.9",
     "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "tsx": "^4.19.3"
   }
 }
