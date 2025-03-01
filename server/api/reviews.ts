@@ -1,7 +1,7 @@
-import { Review } from '../types';
+import { Review } from '../../app/types';
 
 const API_URL = 'http://localhost:5000/api';
-
+// const API_URL = 'https://kisan-ai-1xp6.vercel.app/api';
 // export async function getReviews(): Promise<Review[]> {
 //   try {
 //     const response = await fetch(`${API_URL}/reviews`);

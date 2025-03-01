@@ -1,7 +1,6 @@
+"use client";
 
-'use client';
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Sprout,
   Leaf,
@@ -12,11 +11,11 @@ import {
   BadgeDollarSign,
   ShieldCheck,
   ArrowRight,
-} from 'lucide-react';
-import ValueChainCard from './components/ValueChainCard';
-import SolutionCard from './components/SolutionCard';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+} from "lucide-react";
+import ValueChainCard from "./components/ValueChainCard";
+import SolutionCard from "./components/SolutionCard";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   LineChart,
   Line,
@@ -26,9 +25,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from 'recharts';
-import { useRouter } from 'next/navigation';
-
+} from "recharts";
+import { useRouter } from "next/navigation";
 
 interface VideoCard {
   thumbnail: string;
@@ -40,62 +38,69 @@ interface VideoCard {
 }
 
 export default function Home() {
-   const router = useRouter();
+  const router = useRouter();
 
   const handleScheduleDemo = () => {
-    router.push('/schedule-demo');
+    router.push("/schedule-demo");
   };
 
   const handleCaseStudies = () => {
-    router.push('/case-studies');
+    router.push("/case-studies");
   };
 
   const valueChainCards = [
-    { icon: <Sprout size={28} />, title: 'Smart Farming' },
-    { icon: <Leaf size={28} />, title: 'Crop Management' },
-    { icon: <Coffee size={28} />, title: 'Yield Optimization' },
-    { icon: <Factory size={28} />, title: 'Resource Planning' },
-    { icon: <Building2 size={28} />, title: 'Farm Analytics' },
-    { icon: <BadgeDollarSign size={28} />, title: 'Cost Optimization' },
-    { icon: <Landmark size={28} />, title: 'Compliance Tools' },
-    { icon: <ShieldCheck size={28} />, title: 'Quality Assurance' },
+    { icon: <Sprout size={28} />, title: "Smart Farming" },
+    { icon: <Leaf size={28} />, title: "Crop Management" },
+    { icon: <Coffee size={28} />, title: "Yield Optimization" },
+    { icon: <Factory size={28} />, title: "Resource Planning" },
+    { icon: <Building2 size={28} />, title: "Farm Analytics" },
+    { icon: <BadgeDollarSign size={28} />, title: "Cost Optimization" },
+    { icon: <Landmark size={28} />, title: "Compliance Tools" },
+    { icon: <ShieldCheck size={28} />, title: "Quality Assurance" },
   ];
 
-
-
-  
   const solutions = [
     {
       icon: <Sprout className="w-14 h-14" />,
-      title: 'AI Crop Analysis',
+      title: "AI Crop Analysis",
       description:
-        'Advanced machine learning algorithms analyze crop health, predict yields, and provide actionable insights for optimal farming decisions.',
-      ctaLink: '/solutions/crop-analysis',
+        "Advanced machine learning algorithms analyze crop health, predict yields, and provide actionable insights for optimal farming decisions.",
+      ctaLink: "/solutions/crop-analysis",
       expandedContent: (
         <div className="space-y-6">
           <p>
-            Our AI Crop Analysis system uses cutting-edge machine learning algorithms to revolutionize how you monitor and manage your crops. Here's what makes our solution unique:
+            Our AI Crop Analysis system uses cutting-edge machine learning
+            algorithms to revolutionize how you monitor and manage your crops.
+            Here's what makes our solution unique:
           </p>
           <ul className="list-disc pl-6 space-y-3">
             <li>
-              <strong>Real-time Monitoring:</strong> Advanced sensors and satellite imagery provide continuous crop health assessment
+              <strong>Real-time Monitoring:</strong> Advanced sensors and
+              satellite imagery provide continuous crop health assessment
             </li>
             <li>
-              <strong>Predictive Analytics:</strong> AI-powered yield prediction with up to 95% accuracy
+              <strong>Predictive Analytics:</strong> AI-powered yield prediction
+              with up to 95% accuracy
             </li>
             <li>
-              <strong>Disease Detection:</strong> Early warning system for pest infestations and crop diseases
+              <strong>Disease Detection:</strong> Early warning system for pest
+              infestations and crop diseases
             </li>
             <li>
-              <strong>Growth Tracking:</strong> Detailed growth stage monitoring and optimization recommendations
+              <strong>Growth Tracking:</strong> Detailed growth stage monitoring
+              and optimization recommendations
             </li>
           </ul>
           <div className="border-l-4 border-emerald-500 pl-4 my-6">
             <p className="text-emerald-400 italic">
-              "The AI Crop Analysis system helped us increase our yield by 40% while reducing resource waste." - John Smith, Agricultural Director
+              "The AI Crop Analysis system helped us increase our yield by 40%
+              while reducing resource waste." - John Smith, Agricultural
+              Director
             </p>
           </div>
-          <h4 className="text-lg font-semibold text-emerald-400 mt-6">Key Benefits:</h4>
+          <h4 className="text-lg font-semibold text-emerald-400 mt-6">
+            Key Benefits:
+          </h4>
           <ul className="list-disc pl-6 space-y-3">
             <li>Increased crop yields through optimized growing conditions</li>
             <li>Reduced crop loss from early disease detection</li>
@@ -107,31 +112,38 @@ export default function Home() {
     },
     {
       icon: <Building2 className="w-14 h-14" />,
-      title: 'Smart Resource Management',
+      title: "Smart Resource Management",
       description:
-        'Intelligent resource allocation system that optimizes water usage, fertilizer application, and farm operations using real-time data.',
-      ctaLink: '/solutions/resource-management',
+        "Intelligent resource allocation system that optimizes water usage, fertilizer application, and farm operations using real-time data.",
+      ctaLink: "/solutions/resource-management",
       expandedContent: (
         <div className="space-y-6">
           <p>
-            Smart Resource Management transforms traditional farming practices through intelligent automation and data-driven decision making:
+            Smart Resource Management transforms traditional farming practices
+            through intelligent automation and data-driven decision making:
           </p>
           <ul className="list-disc pl-6 space-y-3">
             <li>
-              <strong>Precision Irrigation:</strong> AI-controlled water distribution based on soil moisture and weather forecasts
+              <strong>Precision Irrigation:</strong> AI-controlled water
+              distribution based on soil moisture and weather forecasts
             </li>
             <li>
-              <strong>Fertilizer Optimization:</strong> Custom fertilization schedules based on soil composition and crop needs
+              <strong>Fertilizer Optimization:</strong> Custom fertilization
+              schedules based on soil composition and crop needs
             </li>
             <li>
-              <strong>Equipment Tracking:</strong> Real-time monitoring of farm machinery and automated maintenance scheduling
+              <strong>Equipment Tracking:</strong> Real-time monitoring of farm
+              machinery and automated maintenance scheduling
             </li>
             <li>
-              <strong>Labor Management:</strong> Intelligent workforce allocation and task optimization
+              <strong>Labor Management:</strong> Intelligent workforce
+              allocation and task optimization
             </li>
           </ul>
           <div className="bg-emerald-900/20 p-4 rounded-lg my-6">
-            <h4 className="text-emerald-400 font-semibold mb-2">Resource Savings:</h4>
+            <h4 className="text-emerald-400 font-semibold mb-2">
+              Resource Savings:
+            </h4>
             <ul className="space-y-2">
               <li>Water usage reduced by up to 30%</li>
               <li>Fertilizer efficiency improved by 25%</li>
@@ -140,25 +152,29 @@ export default function Home() {
             </ul>
           </div>
           <p className="text-sm text-emerald-400/60">
-            Our system integrates with existing farm infrastructure and provides real-time monitoring through our mobile app.
+            Our system integrates with existing farm infrastructure and provides
+            real-time monitoring through our mobile app.
           </p>
         </div>
       ),
     },
     {
       icon: <ShieldCheck className="w-14 h-14" />,
-      title: 'Precision Agriculture',
+      title: "Precision Agriculture",
       description:
-        'Data-driven precision farming tools that enable targeted interventions, reduce waste, and maximize agricultural productivity.',
-      ctaLink: '/solutions/precision-farming',
+        "Data-driven precision farming tools that enable targeted interventions, reduce waste, and maximize agricultural productivity.",
+      ctaLink: "/solutions/precision-farming",
       expandedContent: (
         <div className="space-y-6">
           <p>
-            Precision Agriculture combines advanced technology with traditional farming wisdom to maximize efficiency and productivity:
+            Precision Agriculture combines advanced technology with traditional
+            farming wisdom to maximize efficiency and productivity:
           </p>
           <div className="grid grid-cols-2 gap-4 my-6">
             <div className="bg-emerald-900/20 p-4 rounded-lg">
-              <h4 className="text-emerald-400 font-semibold mb-2">Field Mapping</h4>
+              <h4 className="text-emerald-400 font-semibold mb-2">
+                Field Mapping
+              </h4>
               <ul className="text-sm space-y-2">
                 <li>High-resolution soil mapping</li>
                 <li>Topographic analysis</li>
@@ -166,7 +182,9 @@ export default function Home() {
               </ul>
             </div>
             <div className="bg-emerald-900/20 p-4 rounded-lg">
-              <h4 className="text-emerald-400 font-semibold mb-2">Smart Applications</h4>
+              <h4 className="text-emerald-400 font-semibold mb-2">
+                Smart Applications
+              </h4>
               <ul className="text-sm space-y-2">
                 <li>Variable rate seeding</li>
                 <li>Targeted pest control</li>
@@ -174,7 +192,9 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <h4 className="text-lg font-semibold text-emerald-400">Technology Stack:</h4>
+          <h4 className="text-lg font-semibold text-emerald-400">
+            Technology Stack:
+          </h4>
           <ul className="list-disc pl-6 space-y-3">
             <li>GPS-guided machinery with centimeter accuracy</li>
             <li>Drone-based crop monitoring and mapping</li>
@@ -184,7 +204,9 @@ export default function Home() {
           <div className="border-t border-emerald-800 mt-6 pt-6">
             <p className="text-emerald-400 font-semibold">Results:</p>
             <p className="text-sm text-emerald-400/60">
-              Farmers using our Precision Agriculture system report up to 20% increase in yield and 30% reduction in input costs within the first year.
+              Farmers using our Precision Agriculture system report up to 20%
+              increase in yield and 30% reduction in input costs within the
+              first year.
             </p>
           </div>
         </div>
@@ -192,52 +214,53 @@ export default function Home() {
     },
   ];
 
-
- const videos: VideoCard[] = [
+  const videos: VideoCard[] = [
     {
-       thumbnail: 'https://img.youtube.com/vi/KfB2sx9uCkI/maxresdefault.jpg',
-      videoUrl: 'https://www.youtube.com/watch?v=KfB2sx9uCkI',
-      title: 'The Futuristic Farms That Will Feed the World | Freethink | Future of Food',
-      duration: '6:19',
-      channel: 'Free Think',
-      embedId: 'KfB2sx9uCkI',
+      thumbnail: "https://img.youtube.com/vi/KfB2sx9uCkI/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=KfB2sx9uCkI",
+      title:
+        "The Futuristic Farms That Will Feed the World | Freethink | Future of Food",
+      duration: "6:19",
+      channel: "Free Think",
+      embedId: "KfB2sx9uCkI",
     },
     {
-     thumbnail: 'https://img.youtube.com/vi/1IwKWYNycj8/maxresdefault.jpg',
-      videoUrl: 'https://www.youtube.com/watch?v=1IwKWYNycj8',
-      title: 'Awesome Hydroponic Strawberries Farming - Modern Agriculture Technology - Strawberries Harvesting',
-      duration: '10:32',
-      channel: 'National Geographic',
-      embedId: '1IwKWYNycj8',
+      thumbnail: "https://img.youtube.com/vi/1IwKWYNycj8/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=1IwKWYNycj8",
+      title:
+        "Awesome Hydroponic Strawberries Farming - Modern Agriculture Technology - Strawberries Harvesting",
+      duration: "10:32",
+      channel: "National Geographic",
+      embedId: "1IwKWYNycj8",
     },
     {
-      thumbnail: 'https://img.youtube.com/vi/J4SaSfnHK3I/maxresdefault.jpg',
-      videoUrl: 'https://www.youtube.com/watch?v=J4SaSfnHK3I',
-      title: 'Vertical Farming: The Future of Agriculture',
-      duration: '8:15',
-      channel: 'National Geographic',
-      embedId: 'J4SaSfnHK3I',
+      thumbnail: "https://img.youtube.com/vi/J4SaSfnHK3I/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=J4SaSfnHK3I",
+      title: "Vertical Farming: The Future of Agriculture",
+      duration: "8:15",
+      channel: "National Geographic",
+      embedId: "J4SaSfnHK3I",
     },
-     {
-       thumbnail: 'https://img.youtube.com/vi/Qmla9NLFBvU/maxresdefault.jpg',
-      videoUrl: 'https://www.youtube.com/watch?v=Qmla9NLFBvU',
-      title: 'The Future of Farming',
-      duration: '12.28',
-      channel: 'TDC',
-      embedId: 'Qmla9NLFBvU',
+    {
+      thumbnail: "https://img.youtube.com/vi/Qmla9NLFBvU/maxresdefault.jpg",
+      videoUrl: "https://www.youtube.com/watch?v=Qmla9NLFBvU",
+      title: "The Future of Farming",
+      duration: "12.28",
+      channel: "TDC",
+      embedId: "Qmla9NLFBvU",
     },
   ];
 
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
 
   const agricultureData = [
-    { month: 'Jan', yield: 4000, rainfall: 240 },
-    { month: 'Feb', yield: 3000, rainfall: 139 },
-    { month: 'Mar', yield: 2000, rainfall: 980 },
-    { month: 'Apr', yield: 2780, rainfall: 390 },
-    { month: 'May', yield: 1890, rainfall: 480 },
-    { month: 'Jun', yield: 2390, rainfall: 380 },
-    { month: 'Jul', yield: 3490, rainfall: 430 },
+    { month: "Jan", yield: 4000, rainfall: 240 },
+    { month: "Feb", yield: 3000, rainfall: 139 },
+    { month: "Mar", yield: 2000, rainfall: 980 },
+    { month: "Apr", yield: 2780, rainfall: 390 },
+    { month: "May", yield: 1890, rainfall: 480 },
+    { month: "Jun", yield: 2390, rainfall: 380 },
+    { month: "Jul", yield: 3490, rainfall: 430 },
   ];
 
   return (
@@ -257,6 +280,7 @@ export default function Home() {
                 Harness the power of artificial intelligence to optimize your
                 agricultural operations and maximize yields
               </p>
+              <a href="https://kisanai.tech" target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
                 className="group bg-emerald-500 text-white hover:bg-emerald-600 px-8 text-lg"
@@ -264,6 +288,7 @@ export default function Home() {
                 <span>Kisan AI</span>
                 <ArrowRight className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" />
               </Button>
+              </a>
             </div>
             <div className="lg:w-1/2">
               <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl transform hover:scale-[1.02] transition-transform duration-500">
@@ -356,19 +381,19 @@ export default function Home() {
               <XAxis
                 dataKey="month"
                 stroke="#cbd5e0"
-                tick={{ fill: '#94a3b8' }}
+                tick={{ fill: "#94a3b8" }}
               />
-              <YAxis stroke="#cbd5e0" tick={{ fill: '#94a3b8' }} />
+              <YAxis stroke="#cbd5e0" tick={{ fill: "#94a3b8" }} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: '#1e293b',
-                  border: 'none',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                  backgroundColor: "#1e293b",
+                  border: "none",
+                  borderRadius: "8px",
+                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.3)",
                 }}
               />
               <Legend
-                wrapperStyle={{ paddingTop: '20px' }}
+                wrapperStyle={{ paddingTop: "20px" }}
                 formatter={(value) => (
                   <span className="text-emerald-300/80">{value}</span>
                 )}
@@ -379,7 +404,7 @@ export default function Home() {
                 stroke="#10b981"
                 strokeWidth={2}
                 name="Crop Yield (kg)"
-                dot={{ fill: '#10b981', strokeWidth: 2 }}
+                dot={{ fill: "#10b981", strokeWidth: 2 }}
               />
               <Line
                 type="monotone"
@@ -387,7 +412,7 @@ export default function Home() {
                 stroke="#3b82f6"
                 strokeWidth={2}
                 name="Rainfall (mm)"
-                dot={{ fill: '#3b82f6', strokeWidth: 2 }}
+                dot={{ fill: "#3b82f6", strokeWidth: 2 }}
               />
             </LineChart>
           </ResponsiveContainer>
@@ -471,7 +496,7 @@ export default function Home() {
           <Button
             variant="outline"
             size="lg"
-            className="border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 px-8"
+            className="border-emerald-500 text-emerald-400 hover:bg-emerald-500/10 hover:text-white px-8"
             onClick={handleCaseStudies}
           >
             Case Studies

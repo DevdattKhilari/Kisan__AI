@@ -1,23 +1,21 @@
-'use client';
+"use client";
 
-
-import React, { useState, useEffect } from 'react';   
-import { Star, Upload } from 'lucide-react';
-import { Review } from '/types';
-import { getReviews, addReview } from '../api/reviews';
-
+import React, { useState, useEffect } from "react";
+import { Star, Upload } from "lucide-react";
+import { Review } from "../types";
+import { getReviews, addReview } from "../../server/api/reviews";
 
 function App() {
   const [contactOpen, setContactOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const [reviewForm, setReviewForm] = useState({
-    name: '',
+    name: "",
     rating: 5,
-    comment: '',
-    longComment: ''
+    comment: "",
+    longComment: "",
   });
 
   useEffect(() => {
@@ -26,7 +24,7 @@ function App() {
         const fetchedReviews = await getReviews();
         setReviews(fetchedReviews);
       } catch (error) {
-        console.error('Error loading reviews:', error);
+        console.error("Error loading reviews:", error);
       } finally {
         setIsLoading(false);
       }
@@ -47,30 +45,32 @@ function App() {
 
   const handleReviewSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const reviewData = {
       name: reviewForm.name,
-      role: 'Farmer',
-      location: 'Unknown',
+      role: "Farmer",
+      location: "Unknown",
       rating: reviewForm.rating,
       comment: reviewForm.comment,
       longComment: reviewForm.longComment,
-      image: selectedImage || 'https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=200&auto=format&fit=crop',
-      farmType: 'Mixed Crop Farming',
-      date: new Date().toISOString().split('T')[0]
+      image:
+        selectedImage ||
+        "https://images.unsplash.com/photo-1560493676-04071c5f467b?q=80&w=200&auto=format&fit=crop",
+      farmType: "Mixed Crop Farming",
+      date: new Date().toISOString().split("T")[0],
     };
 
     try {
       const newReview = await addReview(reviewData);
       if (newReview) {
         setReviews([newReview, ...reviews]);
-        setReviewForm({ name: '', rating: 5, comment: '', longComment: '' });
+        setReviewForm({ name: "", rating: 5, comment: "", longComment: "" });
         setSelectedImage(null);
         setContactOpen(false);
       }
     } catch (error) {
-      console.error('Error submitting review:', error);
-      alert('Failed to submit review. Please try again.');
+      console.error("Error submitting review:", error);
+      alert("Failed to submit review. Please try again.");
     }
   };
 
@@ -147,7 +147,7 @@ function App() {
 
         {/* Write Review Button */}
         <div className="text-center mt-8">
-          <button 
+          <button
             className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-md transition-colors"
             onClick={() => setContactOpen(true)}
           >
@@ -156,29 +156,47 @@ function App() {
         </div>
 
         {/* Review Form Dialog */}
+        {/* Review Form Dialog */}
         {contactOpen && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full relative">
+              {/* Close Button */}
+              <button
+                onClick={() => setContactOpen(false)}
+                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+              >
+                ✖
+              </button>
+
               <div className="mb-4">
                 <h2 className="text-xl font-bold">Write a Review</h2>
-                <p className="text-gray-600">Share your experience with Kisan AI.</p>
+                <p className="text-gray-600">
+                  Share your experience with Kisan AI.
+                </p>
               </div>
+
               <form onSubmit={handleReviewSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Your Name</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     value={reviewForm.name}
-                    onChange={(e) => setReviewForm({ ...reviewForm, name: e.target.value })}
+                    onChange={(e) =>
+                      setReviewForm({ ...reviewForm, name: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="Enter your name"
                     required
                   />
                 </div>
-                
+
                 {/* Photo Upload Section */}
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Your Photo</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Your Photo
+                  </label>
                   <div className="flex items-center gap-4">
                     <div className="relative w-20 h-20 border-2 border-dashed border-gray-300 rounded-full overflow-hidden">
                       {selectedImage ? (
@@ -204,7 +222,9 @@ function App() {
                       <button
                         type="button"
                         className="w-full px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50"
-                        onClick={() => document.getElementById('photo-upload')?.click()}
+                        onClick={() =>
+                          document.getElementById("photo-upload")?.click()
+                        }
                       >
                         Choose Photo
                       </button>
@@ -213,30 +233,40 @@ function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Rating</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Rating
+                  </label>
                   <div className="flex items-center space-x-2">
                     {[1, 2, 3, 4, 5].map((rating) => (
                       <button
                         key={rating}
                         type="button"
                         className={`p-2 rounded-md ${
-                          reviewForm.rating >= rating 
-                            ? 'bg-yellow-400 text-white' 
-                            : 'bg-gray-100 text-gray-400'
+                          reviewForm.rating >= rating
+                            ? "bg-yellow-400 text-white"
+                            : "bg-gray-100 text-gray-400"
                         }`}
                         onClick={() => setReviewForm({ ...reviewForm, rating })}
                       >
-                        <Star className={`w-4 h-4 ${reviewForm.rating >= rating ? 'fill-current' : ''}`} />
+                        <Star
+                          className={`w-4 h-4 ${
+                            reviewForm.rating >= rating ? "fill-current" : ""
+                          }`}
+                        />
                       </button>
                     ))}
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Short Review</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Short Review
+                  </label>
                   <textarea
                     value={reviewForm.comment}
-                    onChange={(e) => setReviewForm({ ...reviewForm, comment: e.target.value })}
+                    onChange={(e) =>
+                      setReviewForm({ ...reviewForm, comment: e.target.value })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     rows={2}
                     placeholder="Share your experience briefly"
@@ -245,10 +275,17 @@ function App() {
                 </div>
 
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Detailed Review</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Detailed Review
+                  </label>
                   <textarea
                     value={reviewForm.longComment}
-                    onChange={(e) => setReviewForm({ ...reviewForm, longComment: e.target.value })}
+                    onChange={(e) =>
+                      setReviewForm({
+                        ...reviewForm,
+                        longComment: e.target.value,
+                      })
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     rows={4}
                     placeholder="Provide more details about your experience"
